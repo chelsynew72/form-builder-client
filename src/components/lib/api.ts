@@ -36,7 +36,6 @@ export const pipelinesApi = {
   update: (formId: string, data: any) => api.put(`/pipelines/form/${formId}`, data),
   delete: (formId: string) => api.delete(`/pipelines/form/${formId}`),
 };
-
 // Submissions API
 export const submissionsApi = {
   create: (data: any) => api.post('/submissions', data),
@@ -53,5 +52,7 @@ export const authApi = {
   signup: (data: any) => api.post('/auth/register', data),
   getProfile: () => api.get('/auth/me'),
 };
+
+
 
 export default api;
