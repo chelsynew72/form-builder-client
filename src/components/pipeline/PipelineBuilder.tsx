@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
-import { PipelineStep } from '@/types/pipeline';
+import { PipelineStep } from '../../types/pipeline';
 import { nanoid } from 'nanoid';
 
 interface PipelineBuilderProps {
