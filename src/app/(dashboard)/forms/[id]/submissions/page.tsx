@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { formsApi, submissionsApi } from '../../../../components/lib/api';
+import { formsApi, submissionsApi } from '../../../../../lib/api';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
-import { StatusBadge } from '../../../../components/submissions/StatusBadge';
+import { StatusBadge } from '../../../../../components/submissions/StatusBadge';
 import { SubmissionsTable } from '@/components/submissions/SubmissionsTable';
 import { ArrowLeft, Search, Download, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
-import { formatDateTime } from '../../../../components/lib/util';
+import { formatDateTime } from '../../../../../lib/utils';
 
 export default function SubmissionsPage() {
   const params = useParams();

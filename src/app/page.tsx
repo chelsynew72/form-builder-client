@@ -36,7 +36,7 @@ export default function AIFormBuilderLanding() {
               <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition font-medium">How it Works</a>
               <a href="#pricing" className="text-gray-600 hover:text-purple-600 transition font-medium">Pricing</a>
               {/* This one was already correct */}
-              <button onClick={() => router.push('/auth/register')} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-200 transition">
+              <button onClick={() => router.push('/auth/signup')} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-200 transition">
                 Get Started
               </button>
             </div>
@@ -56,7 +56,7 @@ export default function AIFormBuilderLanding() {
               <a href="#pricing" className="block text-gray-600 hover:text-purple-600 transition font-medium">Pricing</a>
               {/* --- UPDATED: Added onClick handler for navigation --- */}
               <button 
-                onClick={() => router.push('/auth/register')} 
+                onClick={() => router.push('/auth/signup')} 
                 className="w-full bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition"
               >
                 Get Started

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { PipelineBuilder } from '@/components/pipeline/PipelineBuilder';
-import { formsApi, pipelinesApi } from '../../../../components/lib/api';
+import { formsApi, pipelinesApi } from '../../../../../lib/api';
 import { Toast } from '@/components/ui/Toast';
 import { Button } from '@/components/ui/Button';
 import { ArrowLeft } from 'lucide-react';

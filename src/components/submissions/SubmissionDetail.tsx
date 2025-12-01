@@ -3,7 +3,7 @@
 import { Card, CardHeader, CardContent } from '@/components/ui/Card';
 import { StatusBadge } from './StatusBadge';
 import { StepOutputCard } from './StepOutputCard';
-import { formatDateTime } from '../../components/lib/util';
+import { formatDateTime } from '../../lib/utils';
 import { Clock, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface SubmissionDetailProps {

@@ -4,7 +4,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@
 import { StatusBadge } from './StatusBadge';
 import { Button } from '@/components/ui/Button';
 import { Eye } from 'lucide-react';
-import { formatDateTime } from '../../components/lib/util';
+import { formatDateTime } from '../../lib/utils';
 
 interface SubmissionsTableProps {
   submissions: any[];

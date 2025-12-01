@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { cn } from '../lib/util';
+import { cn } from '../../lib/utils';
 import { CheckCircle, XCircle, Info, X } from 'lucide-react';
 
 interface ToastProps {

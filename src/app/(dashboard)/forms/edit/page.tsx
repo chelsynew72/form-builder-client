@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { FormBuilder } from '@/components/forms/FormBuilder';
-import { formsApi } from '../../../../components/lib/api';
+import { formsApi } from '../../../../lib/api';
 import { Toast } from '@/components/ui/Toast';
 
 export default function EditFormPage() {

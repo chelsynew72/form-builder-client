@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { Sidebar } from '../../components/dashboard/Sidebar';
 import { Header } from '../../components/dashboard/Header';
-import { isAuthenticated } from '../../components/lib/auth';
+import { isAuthenticated } from '../../lib/auth';
 
 export default function DashboardLayout({
   children,

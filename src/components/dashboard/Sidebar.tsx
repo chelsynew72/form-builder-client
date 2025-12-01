@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '../../components/lib/util';
+import { cn } from '../../lib/utils';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -27,7 +27,7 @@ export function Sidebar({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps)
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/login';
+    window.location.href = '/auth/login';
   };
 
   return (

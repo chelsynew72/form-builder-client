@@ -1,48 +1,42 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Mail, Lock, User, ArrowRight, Sparkles } from "lucide-react";
 import { authApi } from "@/lib/api";
-import { setAccessToken } from "@/lib/auth";
 import { Alert } from "@/components/ui/Alert";
 
-export default function Login() {
+export default function Register() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   
   // Form state
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Check if user just registered
-  useEffect(() => {
-    if (searchParams.get("registered") === "true") {
-      setSuccessMessage("Account created successfully! Please log in.");
-    }
-  }, [searchParams]);
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      const response = await authApi.login(email, password);
-      
-      // Save token to localStorage
-      setAccessToken(response.data.access_token);
-      
-      // Redirect to dashboard
-      router.push("/dashboard");
+      await authApi.signup({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+
+      // Redirect to login after successful registration
+      router.push("/auth/login?registered=true");
     } catch (err: any) {
-      console.error("Login error:", err);
+      console.error("Registration error:", err);
       setError(
         err.response?.data?.message || 
-        "Invalid email or password. Please try again."
+        "Failed to create account. Please try again."
       );
     } finally {
       setLoading(false);
@@ -64,18 +58,11 @@ export default function Login() {
           </div>
 
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
-            Welcome Back
+            Create Your Account
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Log in to continue building forms
+            Start building AI-powered forms today
           </p>
-
-          {/* Success Alert */}
-          {successMessage && (
-            <Alert type="success" className="mb-4">
-              {successMessage}
-            </Alert>
-          )}
 
           {/* Error Alert */}
           {error && (
@@ -85,7 +72,43 @@ export default function Login() {
           )}
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleRegister} className="space-y-5">
+            {/* First Name */}
+            <div>
+              <label className="text-gray-700 font-medium mb-1 block">
+                First Name
+              </label>
+              <div className="relative">
+                <User className="absolute left-3 top-3 text-gray-400" />
+                <input
+                  type="text"
+                  required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border-2 border-purple-200 rounded-xl focus:border-purple-400 outline-none transition bg-purple-50/30"
+                  placeholder="John"
+                />
+              </div>
+            </div>
+
+            {/* Last Name */}
+            <div>
+              <label className="text-gray-700 font-medium mb-1 block">
+                Last Name
+              </label>
+              <div className="relative">
+                <User className="absolute left-3 top-3 text-gray-400" />
+                <input
+                  type="text"
+                  required
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border-2 border-purple-200 rounded-xl focus:border-purple-400 outline-none transition bg-purple-50/30"
+                  placeholder="Doe"
+                />
+              </div>
+            </div>
+
             {/* Email */}
             <div>
               <label className="text-gray-700 font-medium mb-1 block">
@@ -116,10 +139,14 @@ export default function Login() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  minLength={6}
                   className="w-full pl-10 pr-4 py-3 border-2 border-purple-200 rounded-xl focus:border-purple-400 outline-none transition bg-purple-50/30"
                   placeholder="••••••••"
                 />
               </div>
+              <p className="text-xs text-gray-500 mt-1">
+                Must be at least 6 characters
+              </p>
             </div>
 
             {/* Submit */}
@@ -129,23 +156,23 @@ export default function Login() {
               className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold text-lg hover:bg-purple-700 hover:shadow-xl hover:scale-[1.02] transition flex justify-center items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
-                <span className="animate-pulse">Logging in...</span>
+                <span className="animate-pulse">Creating...</span>
               ) : (
                 <>
-                  <span>Login</span>
+                  <span>Create Account</span>
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
             </button>
 
-            {/* Switch to Register */}
+            {/* Switch to Login */}
             <p className="text-center text-gray-600 text-sm">
-              Don't have an account?{" "}
+              Already have an account?{" "}
               <a
-                href="/auth/signup"
+                href="/auth/login"
                 className="text-purple-600 font-semibold hover:underline"
               >
-                Create one
+                Log in
               </a>
             </p>
           </form>

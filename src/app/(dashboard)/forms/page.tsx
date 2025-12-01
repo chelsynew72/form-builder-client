@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { formsApi } from '../../../components/lib/api';
+import { formsApi } from '../../../lib/api';
 import { Button } from '../../../components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Badge } from '@/components/ui/Badge';
 import { Plus, Search, MoreVertical, Edit, Trash2, Copy, Eye } from 'lucide-react';
 import Link from 'next/link';
-import { formatDateTime, copyToClipboard } from '../../../components/lib/util';
+import { formatDateTime, copyToClipboard } from '../../../lib/utils';
 import { Toast } from '@/components/ui/Toast';
 
 export default function FormsPage() {

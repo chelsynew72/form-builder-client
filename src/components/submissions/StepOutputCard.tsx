@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { ChevronDown, ChevronUp, Copy, Check } from 'lucide-react';
-import { formatDateTime } from '../../components/lib/util';
+import { formatDateTime } from '../../lib/utils';
 
 interface StepOutputCardProps {
   output: any;

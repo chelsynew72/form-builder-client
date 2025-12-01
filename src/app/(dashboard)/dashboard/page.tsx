@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { StatsCard } from '@/components/dashboard/StatsCard';
 import { Button } from '../../../components/ui/Button';
-import { formsApi, submissionsApi } from '../../../components/lib/api';
+import { formsApi, submissionsApi } from '../../../lib/api';
 import { FileText, Send, CheckCircle, Clock, Plus } from 'lucide-react';
 import Link from 'next/link';
-import { formatDateTime } from '../../../components/lib/util';
+import { formatDateTime } from '../../../lib/utils';
 
 interface DashboardStats {
   totalForms: number;
