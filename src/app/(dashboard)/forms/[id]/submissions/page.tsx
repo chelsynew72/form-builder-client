@@ -50,25 +50,26 @@ export default function SubmissionsPage() {
   };
 
   const loadSubmissions = async () => {
-    setLoading(true);
-    try {
-      const response = await submissionsApi.getByFormId(formId, {
-        page,
-        limit,
-        status: status || undefined,
-        search: search || undefined,
-        sortBy,
-        sortOrder,
-      });
-      setSubmissions(response.data.data);
-      setTotal(response.data.total);
-    } catch (error) {
-      console.error('Failed to load submissions:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  setLoading(true);
+  try {
+    console.log('🔍 Loading submissions for formId:', formId); // Add this
+    const response = await submissionsApi.getByFormId(formId, {
+      page,
+      limit,
+      status: status || undefined,
+      search: search || undefined,
+      sortBy,
+      sortOrder,
+    });
+    console.log('📊 Submissions response:', response.data); // Add this
+    setSubmissions(response.data.data);
+    setTotal(response.data.total);
+  } catch (error) {
+    console.error('Failed to load submissions:', error);
+  } finally {
+    setLoading(false);
+  }
+};
   const handleExport = async () => {
     try {
       // Would implement CSV/JSON export

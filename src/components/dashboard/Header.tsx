@@ -61,7 +61,7 @@ export function Header({ setIsMobileMenuOpen }: HeaderProps) {
                   <button
                     onClick={() => {
                       localStorage.removeItem('token');
-                      window.location.href = '/login';
+                      window.location.href = '/auth/login';
                     }}
                     className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
                   >

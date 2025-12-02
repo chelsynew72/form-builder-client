@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { submissionsApi, formsApi } from '../../../../../../lib/api';
+import { submissionsApi, formsApi } from '@/lib/api';
 import { Button } from '@/components/ui/Button';
 import { SubmissionDetail } from '@/components/submissions/SubmissionDetail';
 import { ArrowLeft, Download, Trash2, RefreshCw } from 'lucide-react';

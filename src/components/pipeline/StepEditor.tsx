@@ -54,11 +54,11 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
     onSave(editedStep);
   };
 
-  const models = [
-    { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro (Best Quality)' },
-    { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash (Faster)' },
-    { value: 'gemini-pro', label: 'Gemini Pro (Standard)' },
-  ];
+ const models = [
+  { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (Fast & Free) ⚡' },
+  { value: 'gemini-2.5-flash-lite', label: 'Gemini 2.5 Flash Lite (Faster) 🚀' },
+ 
+];;
 
   return (
     <Modal isOpen={true} onClose={onCancel} title={`Edit Step ${stepIndex + 1}`} size="xl">
