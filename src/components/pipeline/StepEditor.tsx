@@ -55,8 +55,8 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
   };
 
  const models = [
-  { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (Fast & Free) ⚡' },
-  { value: 'gemini-2.5-flash-lite', label: 'Gemini 2.5 Flash Lite (Faster) 🚀' },
+  { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (Fast & Free)' },
+  { value: 'gemini-2.5-flash-lite', label: 'Gemini 2.5 Flash Lite (Faster) ' },
  
 ];;
 

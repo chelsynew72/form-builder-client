@@ -18,7 +18,7 @@ export default function AIFormBuilderLanding() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Navigation */}
+      
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-lg border-b border-purple-100 shadow-sm' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -54,14 +54,14 @@ export default function AIFormBuilderLanding() {
               <a href="#features" className="block text-gray-600 hover:text-purple-600 transition font-medium">Features</a>
               <a href="#how-it-works" className="block text-gray-600 hover:text-purple-600 transition font-medium">How it Works</a>
               <a href="#pricing" className="block text-gray-600 hover:text-purple-600 transition font-medium">Pricing</a>
-              {/* --- UPDATED: Added onClick handler for navigation --- */}
+              
               <button 
                 onClick={() => router.push('/auth/signup')} 
                 className="w-full bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition"
               >
                 Get Started
               </button>
-              {/* ---------------------------------------------------- */}
+              
             </div>
           </div>
         )}
