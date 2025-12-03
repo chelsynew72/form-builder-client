@@ -252,7 +252,7 @@ export default function AIFormBuilderLanding() {
                 </ul>
                 <button 
                   // --- UPDATED: Added onClick handler for navigation ---
-                  onClick={() => router.push('/Register')} 
+                  onClick={() => router.push('/auth/signup')} 
                   className={`w-full py-3 rounded-lg font-semibold transition ${plan.popular ? 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg shadow-purple-200' : 'border-2 border-purple-600 text-purple-600 hover:bg-purple-50'}`}>
                   {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
                 </button>
@@ -278,7 +278,7 @@ export default function AIFormBuilderLanding() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
                   // --- UPDATED: Added onClick handler for navigation ---
-                  onClick={() => router.push('/Register')} 
+                  onClick={() => router.push('/auth/signup')} 
                   className="group bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center space-x-2"
                 >
                   <span>Start Free Trial</span>
