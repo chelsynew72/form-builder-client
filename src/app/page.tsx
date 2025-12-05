@@ -94,7 +94,7 @@ export default function AIFormBuilderLanding() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {/* --- UPDATED: Ensured correct casing for navigation --- */}
               <button 
-                onClick={() => router.push('/Register')} 
+                onClick={() => router.push('/auth/signup')} 
                 className="group bg-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-purple-700 hover:shadow-2xl hover:shadow-purple-200 transition-all hover:scale-105 flex items-center space-x-2"
               >
                 <span>Start Building Free</span>
@@ -180,7 +180,7 @@ export default function AIFormBuilderLanding() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
               How It
-              <span className="text-purple-600"> Works</span>
+              <span className="text-purple-500"> Works</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Three simple steps to create your perfect form
@@ -277,7 +277,7 @@ export default function AIFormBuilderLanding() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
-                  // --- UPDATED: Added onClick handler for navigation ---
+                  
                   onClick={() => router.push('/auth/signup')} 
                   className="group bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center space-x-2"
                 >

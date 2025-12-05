@@ -5,7 +5,6 @@ import { Modal } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
-import { Select } from '@/components/ui/Select';
 import { PipelineStep } from '@/types/pipeline';
 
 interface StepEditorProps {
@@ -17,8 +16,19 @@ interface StepEditorProps {
   onCancel: () => void;
 }
 
-export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave, onCancel }: StepEditorProps) {
-  const [editedStep, setEditedStep] = useState<PipelineStep>({ ...step });
+export function StepEditor({
+  step,
+  stepIndex,
+  formFields,
+  previousSteps,
+  onSave,
+  onCancel
+}: StepEditorProps) {
+  
+  const [editedStep, setEditedStep] = useState<PipelineStep>({
+    ...step,
+    model: 'gemini-2.5-flash', 
+  });
 
   const insertVariable = (variable: string) => {
     const textarea = document.getElementById('prompt-textarea') as HTMLTextAreaElement;
@@ -28,13 +38,12 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
       const text = editedStep.prompt;
       const before = text.substring(0, start);
       const after = text.substring(end);
-      
+
       setEditedStep({
         ...editedStep,
         prompt: before + `{${variable}}` + after,
       });
 
-      // Set cursor position after inserted variable
       setTimeout(() => {
         textarea.focus();
         textarea.setSelectionRange(start + variable.length + 2, start + variable.length + 2);
@@ -51,18 +60,17 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
       alert('Step prompt is required');
       return;
     }
-    onSave(editedStep);
-  };
 
- const models = [
-  { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (Fast & Free)' },
-  { value: 'gemini-2.5-flash-lite', label: 'Gemini 2.5 Flash Lite (Faster) ' },
- 
-];;
+    onSave({
+      ...editedStep,
+      model: 'gemini-2.5-flash', 
+    });
+  };
 
   return (
     <Modal isOpen={true} onClose={onCancel} title={`Edit Step ${stepIndex + 1}`} size="xl">
       <div className="space-y-4">
+        
         <Input
           label="Step Name"
           value={editedStep.name}
@@ -75,15 +83,8 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
           label="Description"
           value={editedStep.description || ''}
           onChange={(e) => setEditedStep({ ...editedStep, description: e.target.value })}
-          placeholder="Optional description of what this step does"
+          placeholder="Optional description"
           rows={2}
-        />
-
-        <Select
-          label="AI Model"
-          value={editedStep.model || 'gemini-1.5-pro'}
-          onChange={(e) => setEditedStep({ ...editedStep, model: e.target.value })}
-          options={models}
         />
 
         {/* Insert Variables */}
@@ -92,6 +93,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
             Insert Variables
           </label>
           <div className="flex flex-wrap gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200 max-h-40 overflow-y-auto">
+            
             <Button
               type="button"
               onClick={() => insertVariable('all_fields')}
@@ -100,6 +102,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
             >
               {'{all_fields}'}
             </Button>
+
             {formFields.map(field => (
               <Button
                 key={field.id}
@@ -112,6 +115,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
                 {`{${field.id}}`}
               </Button>
             ))}
+
             {previousSteps.map((prevStep, idx) => (
               <Button
                 key={idx}
@@ -124,6 +128,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
                 {`{step_${idx + 1}_output}`}
               </Button>
             ))}
+
           </div>
           <p className="text-xs text-gray-500 mt-1">
             Click a variable to insert it at cursor position in the prompt
@@ -136,7 +141,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
           label="AI Prompt"
           value={editedStep.prompt}
           onChange={(e) => setEditedStep({ ...editedStep, prompt: e.target.value })}
-          placeholder="Enter your AI prompt here. Use variables like {field_id} and {step_1_output}"
+          placeholder="Enter your AI prompt here..."
           rows={8}
           className="font-mono text-sm"
           required
@@ -144,7 +149,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
 
         {/* Example */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 className="font-semibold text-blue-900 text-sm mb-2">💡 Example Prompt</h4>
+          <h4 className="font-semibold text-blue-900 text-sm mb-2"> Example Prompt</h4>
           <p className="text-sm text-blue-800 font-mono">
             "Write a professional response email to {'{name}'} regarding their message: {'{message}'}. 
             Keep the tone friendly and helpful."
@@ -159,6 +164,7 @@ export function StepEditor({ step, stepIndex, formFields, previousSteps, onSave,
             Save Step
           </Button>
         </div>
+
       </div>
     </Modal>
   );

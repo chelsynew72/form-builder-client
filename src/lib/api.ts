@@ -10,7 +10,7 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
-console.log("🔵 API BASE URL:", API_BASE_URL);
+
 
 
 // Add auth token to requests
@@ -48,12 +48,23 @@ export const submissionsApi = {
   delete: (id: string) => api.delete(`/submissions/${id}`),
 };
 
-// Auth API
 export const authApi = {
   login: (email: string, password: string) => 
     api.post('/auth/login', { email, password }),
-  signup: (data: any) => api.post('/auth/register', data),
+  signup: (data: any) => api.post('/auth/signup', data),
   getProfile: () => api.get('/auth/me'),
+  
+  
+  updateProfile: (data: { firstName: string; lastName: string; email: string }) =>
+    api.put('/auth/profile', data),
+  
+  changePassword: (data: { currentPassword: string; newPassword: string }) =>
+    api.put('/auth/password', data),
+  
+  updateEmailPreferences: (preferences: any) =>
+    api.put('/auth/email-preferences', preferences),
+  
+  deleteAccount: () => api.delete('/auth/account'),
 };
 
 
