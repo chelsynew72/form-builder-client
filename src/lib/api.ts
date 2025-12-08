@@ -1,29 +1,29 @@
+"use client";
 
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-
+// Use a function to get the base URL to avoid build-time issues
+const getBaseURL = () => {
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+};
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: getBaseURL(),
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-
-
 // Add auth token to requests
 api.interceptors.request.use((config) => {
-  if (typeof window !== "undefined") { // only run in browser
-    const token = localStorage.getItem('access_token'); // correct key
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem('access_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
   }
   return config;
 });
-
 
 // Forms API
 export const formsApi = {
@@ -42,6 +42,7 @@ export const pipelinesApi = {
   update: (formId: string, data: any) => api.put(`/pipelines/form/${formId}`, data),
   delete: (formId: string) => api.delete(`/pipelines/form/${formId}`),
 };
+
 // Submissions API
 export const submissionsApi = {
   create: (data: any) => api.post('/submissions', data),
@@ -57,7 +58,6 @@ export const authApi = {
   signup: (data: any) => api.post('/auth/signup', data),
   getProfile: () => api.get('/auth/me'),
   
-  
   updateProfile: (data: { firstName: string; lastName: string; email: string }) =>
     api.put('/auth/profile', data),
   
@@ -69,7 +69,5 @@ export const authApi = {
   
   deleteAccount: () => api.delete('/auth/account'),
 };
-
-
 
 export default api;
