@@ -1,6 +1,9 @@
 import { Suspense } from "react";
 import LoginForm from "./LoginForm";
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default function LoginPage() {
   return (
     <Suspense fallback={
