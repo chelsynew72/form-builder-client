@@ -7,18 +7,16 @@ import { authApi } from "@/lib/api";
 import { setAccessToken } from "@/lib/auth";
 import { Alert } from "@/components/ui/Alert";
 
-export default function Login() {
+export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   
-  // Form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Check if user just registered
   useEffect(() => {
     if (searchParams.get("registered") === "true") {
       setSuccessMessage("Account created successfully! Please log in.");
@@ -32,11 +30,7 @@ export default function Login() {
 
     try {
       const response = await authApi.login(email, password);
-      
-      // Save token to localStorage
       setAccessToken(response.data.access_token);
-      
-      // Redirect to dashboard
       router.push("/dashboard");
     } catch (err: any) {
       console.error("Login error:", err);
@@ -56,7 +50,6 @@ export default function Login() {
         <div className="absolute bottom-0 left-0 w-56 h-56 bg-purple-200 opacity-20 rounded-full blur-3xl"></div>
 
         <div className="relative z-10">
-          {/* Logo */}
           <div className="flex justify-center mb-6">
             <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-purple-300">
               <Sparkles className="w-6 h-6 text-white" />
@@ -70,23 +63,19 @@ export default function Login() {
             Log in to continue building forms
           </p>
 
-          {/* Success Alert */}
           {successMessage && (
             <Alert type="success" className="mb-4">
               {successMessage}
             </Alert>
           )}
 
-          {/* Error Alert */}
           {error && (
             <Alert type="error" className="mb-4">
               {error}
             </Alert>
           )}
 
-          {/* Form */}
           <form onSubmit={handleLogin} className="space-y-5">
-            {/* Email */}
             <div>
               <label className="text-gray-700 font-medium mb-1 block">
                 Email
@@ -104,7 +93,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Password */}
             <div>
               <label className="text-gray-700 font-medium mb-1 block">
                 Password
@@ -122,7 +110,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading}
@@ -138,7 +125,6 @@ export default function Login() {
               )}
             </button>
 
-            {/* Switch to Register */}
             <p className="text-center text-gray-600 text-sm">
               Don't have an account?{" "}
               <a
