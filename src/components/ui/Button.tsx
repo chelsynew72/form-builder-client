@@ -1,5 +1,8 @@
+
+"use client";
 import React from 'react';
 import { cn } from '../../lib/utils';
+
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost';
