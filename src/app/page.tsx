@@ -18,7 +18,7 @@ export default function AIFormBuilderLanding() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Navigation */}
+      
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-lg border-b border-purple-100 shadow-sm' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -36,7 +36,7 @@ export default function AIFormBuilderLanding() {
               <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition font-medium">How it Works</a>
               <a href="#pricing" className="text-gray-600 hover:text-purple-600 transition font-medium">Pricing</a>
               {/* This one was already correct */}
-              <button onClick={() => router.push('/auth/register')} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-200 transition">
+              <button onClick={() => router.push('/auth/signup')} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-200 transition">
                 Get Started
               </button>
             </div>
@@ -54,14 +54,14 @@ export default function AIFormBuilderLanding() {
               <a href="#features" className="block text-gray-600 hover:text-purple-600 transition font-medium">Features</a>
               <a href="#how-it-works" className="block text-gray-600 hover:text-purple-600 transition font-medium">How it Works</a>
               <a href="#pricing" className="block text-gray-600 hover:text-purple-600 transition font-medium">Pricing</a>
-              {/* --- UPDATED: Added onClick handler for navigation --- */}
+              
               <button 
-                onClick={() => router.push('/auth/register')} 
+                onClick={() => router.push('/auth/signup')} 
                 className="w-full bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition"
               >
                 Get Started
               </button>
-              {/* ---------------------------------------------------- */}
+              
             </div>
           </div>
         )}
@@ -94,7 +94,7 @@ export default function AIFormBuilderLanding() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {/* --- UPDATED: Ensured correct casing for navigation --- */}
               <button 
-                onClick={() => router.push('/Register')} 
+                onClick={() => router.push('/auth/signup')} 
                 className="group bg-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-purple-700 hover:shadow-2xl hover:shadow-purple-200 transition-all hover:scale-105 flex items-center space-x-2"
               >
                 <span>Start Building Free</span>
@@ -180,7 +180,7 @@ export default function AIFormBuilderLanding() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
               How It
-              <span className="text-purple-600"> Works</span>
+              <span className="text-purple-500"> Works</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Three simple steps to create your perfect form
@@ -252,7 +252,7 @@ export default function AIFormBuilderLanding() {
                 </ul>
                 <button 
                   // --- UPDATED: Added onClick handler for navigation ---
-                  onClick={() => router.push('/Register')} 
+                  onClick={() => router.push('/auth/signup')} 
                   className={`w-full py-3 rounded-lg font-semibold transition ${plan.popular ? 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg shadow-purple-200' : 'border-2 border-purple-600 text-purple-600 hover:bg-purple-50'}`}>
                   {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
                 </button>
@@ -277,8 +277,8 @@ export default function AIFormBuilderLanding() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
-                  // --- UPDATED: Added onClick handler for navigation ---
-                  onClick={() => router.push('/Register')} 
+                  
+                  onClick={() => router.push('/auth/signup')} 
                   className="group bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center space-x-2"
                 >
                   <span>Start Free Trial</span>
