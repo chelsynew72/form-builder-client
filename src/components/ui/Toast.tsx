@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import { cn } from '../../lib/utils';
 import { CheckCircle, XCircle, Info, X } from 'lucide-react';
