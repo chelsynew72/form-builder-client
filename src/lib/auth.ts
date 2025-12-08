@@ -1,6 +1,5 @@
 "use client";
 
-// Client-side auth utilities only
 export const getAccessToken = () => {
   if (typeof window === 'undefined') return null;
   return localStorage.getItem('access_token');
@@ -14,8 +13,4 @@ export const setAccessToken = (token: string) => {
 export const removeAccessToken = () => {
   if (typeof window === 'undefined') return;
   localStorage.removeItem('access_token');
-};
-
-export const isAuthenticated = () => {
-  return !!getAccessToken();
 };
