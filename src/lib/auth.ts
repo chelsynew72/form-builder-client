@@ -14,3 +14,6 @@ export const removeAccessToken = () => {
   if (typeof window === 'undefined') return;
   localStorage.removeItem('access_token');
 };
+export const isAuthenticated = () => {
+  return !!getAccessToken();
+};
