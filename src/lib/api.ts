@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // Use a function to get the base URL to avoid build-time issues
 const getBaseURL = () => {
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  return process.env.NEXT_PUBLIC_API_URL || 'https://form-builder-backend-6wju.onrender.com';
 };
 
 const api = axios.create({
