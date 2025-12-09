@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
-import { authApi } from "@/lib/api";
-import { setAccessToken } from "@/lib/auth";
 import { Alert } from "@/components/ui/Alert";
 
 export default function LoginForm() {
@@ -29,6 +27,10 @@ export default function LoginForm() {
     setError(null);
 
     try {
+      // Dynamic imports
+      const { authApi } = await import("@/lib/api");
+      const { setAccessToken } = await import("@/lib/auth");
+      
       const response = await authApi.login(email, password);
       setAccessToken(response.data.access_token);
       router.push("/dashboard");
