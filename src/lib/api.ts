@@ -55,7 +55,7 @@ export const submissionsApi = {
 export const authApi = {
   login: (email: string, password: string) => 
     api.post('/auth/login', { email, password }),
-  signup: (data: any) => api.post('/auth/signup', data),
+  signup: (data: any) => api.post('/auth/register', data),
   getProfile: () => api.get('/auth/me'),
   
   updateProfile: (data: { firstName: string; lastName: string; email: string }) =>
