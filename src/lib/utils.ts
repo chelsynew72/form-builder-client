@@ -1,3 +1,5 @@
+"use client";
+
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -181,10 +183,10 @@ export async function sleep(ms: number): Promise<void> {
 // Copy to clipboard
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
-    if (navigator.clipboard && window.isSecureContext) {
+    if (typeof window !== 'undefined' && navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(text);
       return true;
-    } else {
+    } else if (typeof document !== 'undefined') {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = text;
@@ -201,6 +203,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
         return false;
       }
     }
+    return false;
   } catch (error) {
     console.error('Failed to copy to clipboard:', error);
     return false;
@@ -209,6 +212,8 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 
 // Download file
 export function downloadFile(content: string, filename: string, mimeType: string = 'text/plain') {
+  if (typeof document === 'undefined') return;
+  
   const blob = new Blob([content], { type: mimeType });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
