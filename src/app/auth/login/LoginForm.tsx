@@ -122,7 +122,7 @@ export default function LoginForm() {
               ) : (
                 <>
                   <span>Login</span>
-                  <ArrowRight className="w-5 h-4" />
+                  <ArrowRight className="w-5 h-5" />
                 </>
               )}
             </button>
