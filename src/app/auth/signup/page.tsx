@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Mail, Lock, User, ArrowRight, Sparkles } from "lucide-react";
+
+import { Mail, Lock, User, ArrowRight, Sparkles, Loader2 } from "lucide-react";
 import { authApi } from "@/lib/api";
 import { Alert } from "@/components/ui/Alert";
 
@@ -150,13 +151,17 @@ export default function Register() {
             </div>
 
             {/* Submit */}
+
             <button
               type="submit"
               disabled={loading}
               className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold text-lg hover:bg-purple-700 hover:shadow-xl hover:scale-[1.02] transition flex justify-center items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
-                <span className="animate-pulse">Creating...</span>
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span>Creating...</span>
+                </>
               ) : (
                 <>
                   <span>Create Account</span>

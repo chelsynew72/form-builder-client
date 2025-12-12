@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
+
+import { Mail, Lock, ArrowRight, Sparkles, Loader2 } from "lucide-react";
 import { Alert } from "@/components/ui/Alert";
 
 export default function LoginForm() {
@@ -112,13 +113,17 @@ export default function LoginForm() {
               </div>
             </div>
 
+
             <button
               type="submit"
               disabled={loading}
               className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold text-lg hover:bg-purple-700 hover:shadow-xl hover:scale-[1.02] transition flex justify-center items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
-                <span className="animate-pulse">Logging in...</span>
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span>Logging in...</span>
+                </>
               ) : (
                 <>
                   <span>Login</span>
